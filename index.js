@@ -1,8 +1,12 @@
 
 const fs = require("fs");
 const express = require("express");
+const { env } = require("process");
 const app = express();
 const date= new Date();
+const dotenv= require("dotenv");
+
+
 
 app.get("/createtimestamp",function (req,res){
     fs.writeFile(`./${date.getDate()}-${date.getMonth()}-${date.getFullYear()}-${date.getHours()}.txt`,`Date:${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} 
@@ -13,4 +17,4 @@ app.get("/createtimestamp",function (req,res){
     res.json("file-created")
 })
 
-app.listen(3000);
+app.listen(3000 || process.env.PORT);
