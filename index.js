@@ -1,10 +1,11 @@
 
 const fs = require("fs");
 const express = require("express");
-const { env } = require("process");
+
 const app = express();
 const date= new Date();
-const dotenv= require("dotenv");
+const dotenv= require("dotenv").config();
+
 
 
 
@@ -17,4 +18,4 @@ app.get("/createtimestamp",function (req,res){
     res.json("file-created")
 })
 
-app.listen(3000 || process.env.PORT);
+app.listen(process.env.PORT || 3000);
